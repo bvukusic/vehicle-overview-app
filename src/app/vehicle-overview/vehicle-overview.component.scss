@@ -1,0 +1,20 @@
+@import '../../style/_variables';
+
+.vehicle-table {
+    width: 70%;
+    border-collapse: collapse;
+
+}
+
+.search-box {
+    width: 500px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+    align-items: center;
+    padding-block: $padding-md;
+}

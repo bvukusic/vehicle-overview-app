@@ -1,0 +1,46 @@
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+        <h1>Vehicle Overview App</h1>
+    </div>
+    <div class="p-toolbar-group-right">
+        <p-button type="button" label="Sign Out" (click)="onSignOut()"></p-button>
+    </div>
+</p-toolbar>
+<div class="content-wrapper">
+    <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText placeholder="Search vehicles..." (input)="onSearch($event)" class="search-box" />
+    </span>
+    <p-card header="Vehicle List">
+        <p-table [value]="vehicles" class="vehicle-table" styleClass="p-datatable-striped">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Name</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Type</th>
+                    <th>Fuel Type</th>
+                    <th>License Plate</th>
+                    <th>Active</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-vehicle>
+                <tr>
+                    <td>{{ vehicle.name | vehicleNameFormat }}</td>
+                    <td>{{ vehicle.manufacturer }}</td>
+                    <td>{{ vehicle.model }}</td>
+                    <td>{{ vehicle.year }}</td>
+                    <td>{{ vehicle.type }}</td>
+                    <td>{{ vehicle.fuelType }}</td>
+                    <td>{{ vehicle.licensePlate }}</td>
+                    <td>
+                        <i *ngIf="vehicle.active" class="pi pi-check"></i>
+                        <i *ngIf="!vehicle.active" class="pi pi-times"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary"></ng-template>
+        </p-table>
+    </p-card>
+</div>

@@ -1,0 +1,29 @@
+<div class="sign-in-container">
+    <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+        <div class="form-wrapper">
+            <div class="control-wrapper">
+                <div class="input-wrapper">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" pInputText placeholder="Username" formControlName="username"
+                        required="" />
+                </div>
+                <div *ngIf="signInForm.get('username')?.touched && signInForm.get('username')?.errors?.['required']"
+                    class="error">
+                    Username is required.
+                </div>
+            </div>
+            <div class="control-wrapper">
+                <div class="input-wrapper">
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" pInputText placeholder="Password" formControlName="password"
+                        required="" />
+                </div>
+                <div *ngIf="signInForm.get('password')?.touched && signInForm.get('password')?.errors?.['passwordInvalid']"
+                    class="error">
+                    {{ signInForm.get('password')?.errors?.['passwordInvalid'] }}
+                </div>
+            </div>
+            <p-button type="submit" label="Sign In" [disabled]="!signInForm.valid"></p-button>
+        </div>
+    </form>
+</div>
